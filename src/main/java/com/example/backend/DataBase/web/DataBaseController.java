@@ -19,5 +19,5 @@ public class DataBaseController {
     public void initDataBase() {
         dataBaseService.loadWordsToDB();
     }
-
 }
+
