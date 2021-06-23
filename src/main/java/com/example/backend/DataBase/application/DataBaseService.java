@@ -18,6 +18,7 @@ import java.io.InputStreamReader;
 
 @Service
 @AllArgsConstructor
+
 public class DataBaseService {
 
     private final WordJpaRepository wordJpaRepository;

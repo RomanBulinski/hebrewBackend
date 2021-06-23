@@ -26,4 +26,13 @@ public class Letter {
     private String opis;
     private String pronunciation;
 
+    public Letter(String letterp, String letterh, String letterh2, String nazwa, Long wartoscnumeryczna, String opis, String pronunciation) {
+        this.letterp = letterp;
+        this.letterh = letterh;
+        this.letterh2 = letterh2;
+        this.nazwa = nazwa;
+        this.wartoscnumeryczna = wartoscnumeryczna;
+        this.opis = opis;
+        this.pronunciation = pronunciation;
+    }
 }
