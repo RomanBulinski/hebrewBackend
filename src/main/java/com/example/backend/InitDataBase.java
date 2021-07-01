@@ -27,8 +27,14 @@ public class InitDataBase implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
+        cleanRepositories();
         initWordsInDB();
         initLettersInDB();
+    }
+
+    private void cleanRepositories() {
+        wordJpaRepository.deleteAll();
+        letterJpaRepository.deleteAll();
     }
 
     private void initWordsInDB() {
