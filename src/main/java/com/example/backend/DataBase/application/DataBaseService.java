@@ -28,13 +28,13 @@ public class DataBaseService {
                     .withType(InitDataBase.CsvWords.class)
                     .withIgnoreLeadingWhiteSpace(true)
                     .build();
-            build.stream().forEach(this::initWords);
+            build.stream().forEach(this::initWord);
         } catch (IOException e) {
             throw new IllegalStateException("Failed to parse CSV file", e);
         }
     }
 
-    private void initWords(InitDataBase.CsvWords csvWords) {
+    private void initWord(InitDataBase.CsvWords csvWords) {
         Word word = new Word(
                 csvWords.getHebrew(),
                 csvWords.getPronunciation(),

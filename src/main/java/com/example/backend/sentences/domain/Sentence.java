@@ -1,4 +1,4 @@
-package com.example.backend.sentences.db;
+package com.example.backend.sentences.domain;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -7,7 +7,7 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "sentence")
+@Table(name = "sentences")
 @AllArgsConstructor
 public class Sentence {
 
