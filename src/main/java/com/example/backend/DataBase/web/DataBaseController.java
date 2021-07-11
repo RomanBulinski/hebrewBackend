@@ -14,11 +14,12 @@ import org.springframework.web.bind.annotation.RestController;
 @AllArgsConstructor
 public class DataBaseController {
 
-    private final DataBaseService dataBaseService;
+//    private final DataBaseService dataBaseService;
 
     @GetMapping()
     public void initDataBase() {
-        dataBaseService.loadWordsToDB();
+//        dataBaseService.loadWordsToDB();
+        System.out.println("--- Do nothing");
     }
 }
 

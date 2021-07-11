@@ -20,10 +20,19 @@ public class Letter {
     private Long id;
     private String letterp;
     private String letterh;
-    private String letterh2;
     private String nazwa;
     private Long wartoscnumeryczna;
     private String opis;
     private String pronunciation;
+
+    public Letter(String letterp, String letterh, String nazwa, Long wartoscnumeryczna, String opis, String pronunciation) {
+        this.letterp = letterp;
+        this.letterh = letterh;
+        this.nazwa = nazwa;
+        this.wartoscnumeryczna = wartoscnumeryczna;
+        this.opis = opis;
+        this.pronunciation = pronunciation;
+    }
+
 
 }
