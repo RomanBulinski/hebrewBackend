@@ -1,6 +1,19 @@
 version: '3.1'
 
 services:
+
+ backend-postgres:
+  image: postgres:10.4
+  container_name: backend-postgres
+  volumes:
+    - ./postgresql/:/var/lib/postgresql/data/
+  environment:
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=Legion1944
+  ports:
+    - 5432:5432
+
+
  prometheus:
   image: prom/prometheus:v2.21.0
   ports:
@@ -10,6 +23,7 @@ services:
     - prometheus-data:/prometheus
   command : --web.enable-lifecycle  --config.file=/etc/prometheus/prometheus.yml
 
+
  grafana:
    image: grafana/grafana
    ports:
@@ -17,6 +31,34 @@ services:
    volumes:
      - grafana-data:/var/lib/grafana
 
+
+ #Back-end Spring Boot Application
+ backend_part:
+   #The docker file in scrum-app build the jar and provides the docker image with the following name.
+   build:
+    context: ../
+    dockerfile: Dockerfile
+   container_name: backend_part
+   #Environment variables for Spring Boot Application.
+   environment:
+     - SPRING_DATASOURCE_URL=jdbc:postgresql://backend-postgres:5432/
+     - SPRING_DATASOURCE_USERNAME=postgres
+     - SPRING_DATASOURCE_PASSWORD=Legion1944
+     - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+   ports:
+     - 8080:8080 # Forward the exposed port 8080 on the container to port 8080 on the host machine
+   links:
+     - backend-postgres
+
+
+ angular-service:
+   container_name: Front
+   build: ../../Front/
+   ports:
+     - "4200:80"
+
+
 volumes:
  prometheus-data:
  grafana-data:
+ postgresql:
